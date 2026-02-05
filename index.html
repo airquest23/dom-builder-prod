@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@airquest's DOMBuilder examples</title>
+    <meta name="description" content="@airquest's DOMBuilder examples">
+    
+    <!-- CSS Bootstrap -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    >
+    <!-- CSS Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <!-- CSS Prism -->
+    <link rel="stylesheet" href="./ressources/prism.css">
+    <!-- CSS Custom Styles -->
+    <link rel="stylesheet" href="./ressources/styles.css">
+
+    <!-- JS Prism -->
+    <script src="./ressources/prism.js"></script>
+    <!-- JS Custom Scripts -->
+    <script src="./ressources/scripts.js"></script>
+    <!-- JS Dom Builder -->
+    <script src="./dom-builder/dom-builder.js"></script>
+  </head>
+
+  <body>
+    <main class="p-4">
+      <!-- EXAMPLE Node selection -->
+      <section class="p-3">
+        <script src="./exampleNodeSelection.js"></script>
+        <!-- TITLE -->
+        <div class="row">
+          <u>1) Basics of node selection / attribute setter:</u>
+        </div>
+        <!-- RESULT -->
+        <div class="row p-2">
+          <script>DOM(document.currentScript).add('div').html(exampleNodeSelection_result());</script>
+        </div>
+        <!-- CODES -->
+        <div class="row p-2">
+          <p>Select a node and set its attributes:</p>
+          <div class="col-10 p-2">
+            <pre class="ps-2"><code class="language-javascript"></code></pre>
+            <script>
+              DOM(document.currentScript).previous().getChild()
+                .html(exampleNodeSelection_select.toString());
+            </script>
+          </div>
+          <div class="col-2 p-2 m-auto text-center">
+            <button class="btn btn-outline-secondary btn-sm" onclick="exampleNodeSelection_select()">CLICK ME</button>
+          </div>
+        </div>
+        <div class="row p-2">
+          <p>With a query selector:</p>
+          <div class="col-10 p-2">
+            <pre class="ps-2"><code class="language-javascript"></code></pre>
+            <script>
+              DOM(document.currentScript).previous().getChild()
+                .html(exampleNodeSelection_query.toString());
+            </script>
+          </div>
+          <div class="col-2 p-2 m-auto text-center">
+            <button class="btn btn-outline-secondary btn-sm" onclick="exampleNodeSelection_query()">CLICK ME</button>
+          </div>
+        </div>
+      </section>
+      
+      <!-- EXAMPLE Node manipulation -->
+      <section class="p-3 border-top">
+        <script src="./exampleNodeManipulation.js"></script>
+        <!-- TITLE -->
+        <div class="row">
+          <u>2) Node manipulation:</u>
+        </div>
+        <!-- RESULT -->
+        <div class="row p-2">
+          <script>DOM(document.currentScript).add('div').html(exampleNodeManipulation_result());</script>
+        </div>
+        <!-- CODES -->
+        <div class="row p-2">
+          <p>Move up / move down two divs:</p>
+          <div class="col-10 p-2">
+            <pre class="ps-2"><code class="language-javascript"></code></pre>
+            <script>
+              DOM(document.currentScript).previous().getChild()
+                .html(exampleNodeManipulation.toString());
+            </script>
+          </div>
+          <div class="col-2 p-2 m-auto text-center">
+            <button class="btn btn-outline-secondary btn-sm" onclick="exampleNodeManipulation()">CLICK ME</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- EXAMPLE Node creation -->
+      <section class="p-3 border-top">
+        <script src="./exampleNodeCreation.js"></script>
+        <!-- TITLE -->
+        <div class="row">
+          <u>3) Node creation:</u>
+        </div>
+        <!-- RESULT -->
+        <div class="row p-2">
+          <script>DOM(document.currentScript).add('div').html(exampleNodeCreation_result());</script>
+        </div>
+        <!-- CODES -->
+        <div class="row p-2">
+          <p>Create and add a table row:</p>
+          <div class="col-10 p-2">
+            <pre class="ps-2"><code class="language-javascript"></code></pre>
+            <script>
+              DOM(document.currentScript).previous().getChild()
+                .html(exampleNodeCreation_plus.toString() + '\n\n' + exampleNodeCreation_minus.toString());
+            </script>
+          </div>
+          <div class="col-2 d-flex flex-column justify-content-center align-items-center">
+            <button class="btn btn-outline-secondary mb-2" onclick="exampleNodeCreation_minus()">
+              <i class="bi bi-patch-minus"></i>
+            </button>
+            <button class="btn btn-outline-secondary" onclick="exampleNodeCreation_plus()">
+              <i class="bi bi-patch-plus"></i>
+            </button>
+          </div>
+        </div>
+      </section>
+      
+      <!-- EXAMPLE Node creation -->
+      <section class="p-3 border-top">
+        <!-- TITLE -->
+        <div class="row">
+          <u>4) Nodes array:</u>
+        </div>
+        <!-- CODES -->
+        <div class="row p-2">
+          <p>
+            As an example to work with arrays, here is the code that handles the nice effect that you can see below
+            (example nr. 5) to expand the 'pre' element on hover:
+          </p>
+          <div class="col-12 p-2">
+            <pre class="ps-2"><code class="language-javascript">
+document.addEventListener("DOMContentLoaded", function () {
+  DOM.queryAll('.pre-left').array
+    .forEach(preClass => {
+      preClass.event('mouseenter', (pre) => {
+        DOM(pre)
+          .parent().class('col-9 p-2')
+          .next().class('col-3 p-2')
+      });
+      preClass.event('mouseleave', (pre) => {
+        DOM(pre)
+          .parent().class('col-6 p-2')
+          .next().class('col-6 p-2')
+      });
+    });
+  
+  DOM.queryAll('.pre-right').array
+    .forEach(preClass => {
+      preClass.event('mouseenter', (pre) => {
+        DOM(pre)
+          .parent().class('col-9 p-2')
+          .previous().class('col-3 p-2')
+      });
+      preClass.event('mouseleave', (pre) => {
+        DOM(pre)
+          .parent().class('col-6 p-2')
+          .previous().class('col-6 p-2')
+      });
+    });
+});
+            </code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- EXAMPLE Button toggle -->
+      <section class="p-3 border-top">
+        <script src="./exampleBtnToggle.js"></script>
+        <!-- TITLE -->
+        <div class="row">
+          <u>5) Toggle buttons:</u>
+          <p>This example shows the impementation of a two buttons toggle, for switching between a table and a grid, with a transition.</p>
+        </div>
+        <!-- RESULT -->
+        <div class="row p-2">
+          <div class="col-6 p-2">
+            <p>DOM Builder version:</p>
+            <script>DOM(document.currentScript).add('div').html(exampleBtnToggle_result_dom());</script>
+          </div>
+          <div class="col-6 p-2">
+            <p>Regular version:</p>
+            <script>DOM(document.currentScript).add('div').html(exampleBtnToggle_result_regular());</script>
+          </div>
+        </div>
+        <!-- CODES -->
+        <div class="row p-2">
+          <div class="col-6 p-2">
+            <pre class="ps-2 pre-left" data-lang="DOM Builder version:"><code class="language-javascript"></code></pre>
+            <script>
+              DOM(document.currentScript).previous().getChild()
+                .html(exampleBtnToggle_tableBtnFn_dom.toString() + '\n\n' + exampleBtnToggle_gridBtnFn_dom.toString());
+            </script>
+          </div>
+          <div class="col-6 p-2">
+            <pre class="ps-2 pre-right" data-lang="Regular version:"><code class="language-javascript"></code></pre>
+            <script>
+              DOM(document.currentScript).previous().getChild()
+                .html(exampleBtnToggle_tableBtnFn_regular.toString() + '\n\n' + exampleBtnToggle_gridBtnFn_regular.toString());
+            </script>
+          </div>
+        </div>
+      </section>
+    </main>
+
+
+    <div id="my_element_id">
+
+    </div>
+    <script>
+DOM('my_element_id')              // Select the element
+//To select the body, do like this : DOM.query('body') ...
+  .class('a_random_class')        // Set a class
+    .appendNew('div')             // Append a child (now the selector will be on the 'div' child)
+    .class('d-flex flex-column')  // Set a class on the 'div'
+      .appendNew('p')                               // Append a child to the current 'div' (now the selector will be on the 'p' child)
+      .text('Please click on the button below:')    // Sets the innerText on the 'p'
+      
+      .addAfter('button')                           // Add an element after the 'p' (now the selector will be on the 'button' sibling)
+      .set({                                        // Set the 'button' properties
+        type: 'button',
+        class: 'btn',
+        html: 'Please click me!',
+        event: [
+          'click',
+          (element, event) => {
+            console.log('Oh that feels good, you clicked on me, ...');
+          },
+        ],
+      })
+    .parent()     // Go back to the parent 'div' with the selector
+  .parent()       // Go back to the parent 'body' with the selector
+  .debug();       // Log the accomplished work
+    </script>
+
+    <!-- JS Bootstrap -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
