@@ -215,37 +215,7 @@ document.addEventListener("DOMContentLoaded", function () {
         </div>
       </section>
     </main>
-
-
-    <div id="my_element_id">
-
-    </div>
-    <script>
-DOM('my_element_id')              // Select the element
-//To select the body, do like this : DOM.query('body') ...
-  .class('a_random_class')        // Set a class
-    .appendNew('div')             // Append a child (now the selector will be on the 'div' child)
-    .class('d-flex flex-column')  // Set a class on the 'div'
-      .appendNew('p')                               // Append a child to the current 'div' (now the selector will be on the 'p' child)
-      .text('Please click on the button below:')    // Sets the innerText on the 'p'
-      
-      .addAfter('button')                           // Add an element after the 'p' (now the selector will be on the 'button' sibling)
-      .set({                                        // Set the 'button' properties
-        type: 'button',
-        class: 'btn',
-        html: 'Please click me!',
-        event: [
-          'click',
-          (element, event) => {
-            console.log('Oh that feels good, you clicked on me, ...');
-          },
-        ],
-      })
-    .parent()     // Go back to the parent 'div' with the selector
-  .parent()       // Go back to the parent 'body' with the selector
-  .debug();       // Log the accomplished work
-    </script>
-
+    
     <!-- JS Bootstrap -->
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
