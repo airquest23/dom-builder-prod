@@ -174,7 +174,7 @@ See the documentation below for all references, and also the examples.
 
 ## Advanced usage and examples
 
-Please check [the examples here](./index.html).
+Please check the examples: [html preview here](https://rawcdn.githack.com/airquest23/dom-builder-prod/5c3a226e3eb7ddfec23c127ad073015780894f3e/index.html) / [source code here](./index.html).
 
 ## Documentation
 
