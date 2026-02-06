@@ -6,9 +6,15 @@ This is a very small (and uncomplete*) jQuery-like, lightweight, minimalist help
 
 **Because I am lazy, I didn't put any error handling, you can add them as you want.*
 
+## Installation
+
+This is just a simple JS class that you can copy paste in your projects. It doesn't need any dependency or framework.
+
+To check out the examples, just download this repo and open the 'index.html' file.
+
 ## Concept
 
-The goal was to 'one-line' operations by chaining them. Also operations had to be written in a simple and intuitive way (so for example in your mind, you will think : 'First, I select the element, then I do some changes on it - f. ex. sets its class -, then I append children to it, and then I manipulate those children - f. ex. sets their innerText, type, style, etc. -' ; this example can be translated this way, in an intuitive 'one-liner':
+The goal was to 'one-line' operations by chaining them. Also operations had to be written in a simple and intuitive way (so for example in your mind, you will think : 'First, I select the element, then I do some changes on it - f. ex. set its class -, then I append children to it, and then I manipulate those children - f. ex. set their innerText, type, style, etc. -' ; this example can be translated this way, in an intuitive 'one-liner':
 
 `DOM('my_element_id').class('a_random_class').appendNew('div').class('d-flex').addAfter('p').text('Please click on the button below:').addAfter('button').set({ type: 'button', class: 'btn', html: 'Please click me!', event: ['click', (element, event) => { console.log('Oh that feels good, you clicked on me, ...'); }] }).parent().parent().debug()`).
 
