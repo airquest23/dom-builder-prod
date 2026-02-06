@@ -16,7 +16,7 @@ To check out the examples, just download this repo and open the 'index.html' fil
 
 The goal was to 'one-line' operations by chaining them. Also operations had to be written in a simple and intuitive way (so for example in your mind, you will think : 'First, I select the element, then I do some changes on it - f. ex. set its class -, then I append children to it, and then I manipulate those children - f. ex. set their innerText, type, style, etc. -' ; this example can be translated this way, in an intuitive 'one-liner':
 
-`DOM('my_element_id').class('a_random_class').appendNew('div').class('d-flex').addAfter('p').text('Please click on the button below:').addAfter('button').set({ type: 'button', class: 'btn', html: 'Please click me!', event: ['click', (element, event) => { console.log('Oh that feels good, you clicked on me, ...'); }] }).parent().parent().debug()`).
+`DOM('my_element_id').class('a_random_class').appendNew('div').class('d-flex flex-column').appendNew('p').text('Please click on the button below:').addAfter('button').set({ type: 'button', class: 'btn', html: 'Please click me!', event: ['click', (element, event) => { console.log('Oh that feels good, you clicked on me ...'); }] }).parent().parent().debug()`).
 
 Displaying it vertically for more readability (with explanations):
 
@@ -36,7 +36,7 @@ DOM('my_element_id')              // Select the element
         event: [
           'click',
           (element, event) => {
-            console.log('Oh that feels good, you clicked on me, ...');
+            console.log('Oh that feels good, you clicked on me ...');
           },
         ],
       })
@@ -89,7 +89,7 @@ DEBUG END
 and if you click on the button:
 
 ```
-Oh that feels good, you clicked on me, ...
+Oh that feels good, you clicked on me ...
 ```
 
 ## Basics
@@ -212,7 +212,7 @@ Please check the examples: [html preview here](https://rawcdn.githack.com/airque
 |`moveUp()`|Moves the current node up in the tree||Nothing (current node remains the same)|The current class instance|
 |`moveDown()`|Moves the current node down in the tree||Nothing (current node remains the same)|The current class instance|
 |*3. Remove a node from the DOM*|||||
-|`remove(node = null, returnRemoved = false)`|Removes a node from the DOM|`node`: `{null/HTMLElement/String/Boolean}` - Null / a node to remove / a stored node ID. (If null, takes the current node; if a string is provided, looks for a stored node).<br><br>`returnRemoved`: `{Boolean}` - If true, will return the removed node|Nothing (current node remains the same) / if returnRemoved, then the removed node|The current class instance|
+|`remove(node = null, returnRemoved = false)`|Removes a node from the DOM|`node`: `{null/HTMLElement/String}` - Null / a node to remove / a stored node ID. (If null, takes the current node; if a string is provided, looks for a stored node).<br><br>`returnRemoved`: `{Boolean}` - If true, will return the removed node|Nothing (current node remains the same) / if returnRemoved, then the removed node|The current class instance|
 |*4. Functions*|||||
 |`perform(fn)`|Executes a function with the current node as a parameter|`fn`: `{function(HTMLElement) : void}` - Function to execute with (HTMLElement : the current node)|Nothing (current node remains the same)|The current class instance|
 |`performAll(fn)`|Executes a function with the current node, nodes array and store as parameters|`fn`: `{function(HTMLElement, HTMLElement[], StoredObject[]) : void}` - Function to execute with (HTMLElement : the current node, HTMLElement[] : the current nodes array, StoredObject[] : the current store)|Nothing (current node remains the same)|The current class instance|

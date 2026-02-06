@@ -15,21 +15,21 @@ function exampleNodeCreation_result() {
         <tbody>
           <tr>
             <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
+            <td>First1</td>
+            <td>Last1</td>
+            <td>Handle1</td>
           </tr>
           <tr>
             <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
+            <td>First2</td>
+            <td>Last2</td>
+            <td>Handle2</td>
           </tr>
           <tr>
             <th scope="row">3</th>
-            <td>John</td>
-            <td>Doe</td>
-            <td>@social</td>
+            <td>First3</td>
+            <td>Last3</td>
+            <td>Handle3</td>
           </tr>
         </tbody>
       </table>

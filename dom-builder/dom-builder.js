@@ -376,7 +376,7 @@ class DOMBuilder {
     removed.remove();
     return this;
   };
-
+  
 	/**
   * Helper - Gets a node or a stored node
   * @param {HTMLElement|String} node - A node to retrieve | or a stored node ID
