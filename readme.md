@@ -4,7 +4,7 @@
 
 This is a very small (and uncomplete*) jQuery-like, lightweight, minimalist helper class to manipulate the DOM. I wanted to have a small and clean tool, without having to use jQuery, or any other dependency, allowing me to easily work with the DOM, also in a fun and intuitive way.
 
-**Because I am lazy, I didn't put any error handling, you can add them as you want.*
+*Because I am lazy, I didn't put any error handling, you can add them as you want.
 
 ## Installation
 
@@ -131,8 +131,11 @@ DOM.create('button')
 
 // Working with arrays :
 const nodes = DOM(id)
-  .queryAll('div')          // Select all 'div'
-  //.array.perform()          //
+  .queryAll('div', 'this')  // Select all children 'divs'
+  .array.forEach(           // Do some stuff on the elements
+    classInstance =>        // (toggle the class)
+    classInstance.toggle('a_random_class')
+  )
   .nodes;                   // Return the nodes
 console.log(nodes);         // So then here you can print it
 ```
