@@ -14,9 +14,9 @@ To check out the examples, just download this repo and open the 'index.html' fil
 
 ## Concept
 
-The goal was to 'one-line' operations by chaining them. Also operations had to be written in a simple and intuitive way (so for example in your mind, you will think : 'First, I select the element, then I do some changes on it - f. ex. set its class -, then I append children to it, and then I manipulate those children - f. ex. set their innerText, type, style, etc. -' ; this example can be translated this way, in an intuitive 'one-liner':
+The goal was to 'one-line' operations by chaining them. Also operations had to be written in a simple and intuitive way. So for example in your mind, you will think : 'First, I select the element, then I do some changes on it (f. ex. set its class), then I append children to it, and then I manipulate those children (f. ex. set their innerText, type, style, etc.). This example can be translated this way, in an intuitive 'one-liner':
 
-`DOM('my_element_id').class('a_random_class').appendNew('div').class('d-flex flex-column').appendNew('p').text('Please click on the button below:').addAfter('button').set({ type: 'button', class: 'btn', html: 'Please click me!', event: ['click', (element, event) => { console.log('Oh that feels good, you clicked on me ...'); }] }).parent().parent().debug()`).
+`DOM('my_element_id').class('a_random_class').appendNew('div').class('d-flex flex-column').appendNew('p').text('Please click on the button below:').addAfter('button').set({ type: 'button', class: 'btn', html: 'Please click me!', event: ['click', (element, event) => { console.log('You clicked on me ...'); }] }).parent().parent().debug()`).
 
 Displaying it vertically for more readability (with explanations):
 
@@ -36,7 +36,7 @@ DOM('my_element_id')              // Select the element
         event: [
           'click',
           (element, event) => {
-            console.log('Oh that feels good, you clicked on me ...');
+            console.log('You clicked on me ...');
           },
         ],
       })
@@ -89,7 +89,7 @@ DEBUG END
 and if you click on the button:
 
 ```
-Oh that feels good, you clicked on me ...
+You clicked on me ...
 ```
 
 ## Basics
@@ -187,9 +187,9 @@ Please check the examples: [html preview here](https://rawcdn.githack.com/airque
 |**Properties/Methods**|**Description**|**Parameters**|**Sets**|**Returns**|
 |-------|------|-----------|----|-------|
 |**GETTERS**|**********|**********|**********|**********|
-|`node`|Gets the current node||Nothing|`{HTMLElement}` - The current node|
-|`nodes`|Gets the current nodes array||Nothing|`{HTMLElement[]}` - The current nodes array|
-|`stored`|Gets the current store||Nothing|`{StoredObject[]}` - The current store|
+|`node`|Gets the current node||Nothing (current node remains the same)|`{HTMLElement}` - The current node|
+|`nodes`|Gets the current nodes array||Nothing (current node remains the same)|`{HTMLElement[]}` - The current nodes array|
+|`stored`|Gets the current store||Nothing (current node remains the same)|`{StoredObject[]}` - The current store|
 |**NODE SELECTION**|**********|**********|**********|**********|
 |`select(node)`|Selects a node and stores it as the current node|`node`: `{String/HTMLElement}` - An ID / or a node to select|Current node = selected node|The current class instance|
 |`query(selector, scope = null)`|Selects a node with querySelector and stores it as the current node|`selector`: `{String}` - Selector<br><br>`scope`: `{null/HTMLElement/String}` - Null / a node to define as the scope / 'this' to scope on the current node / or another string as a stored node ID. (If null, queries the whole 'document'; you can enter 'this' to query the current node; if another string is provided (other than 'this'), it looks for a stored node with the string as the node ID).|Current node = the queried node|The current class instance|
@@ -255,15 +255,15 @@ Please check the examples: [html preview here](https://rawcdn.githack.com/airque
 |`save(node = null, id = null)`|Saves a node in the store|`node`: `{null/HTMLElement/String}` - Null / a node to store / or an ID to save the current node. (If null, stores the current node; in that case, you can enter an ID as the 1st parameter to retrieve it later with load()).<br><br>`id`: `{null/String}` - Null / or an internal ID to set for the saved node (optional, but useful to retrieve it later with load()).|Pushes the node into the store|The current class instance|
 |`load(id = null)`|Loads a node from the store to the current node|`id`: `{null/String}` - Null / or the internal ID of the node to retrieve (optional, if no ID is entered the last saved node will be loaded).|Current node = loaded node|The current class instance|
 |`detach(node = null, id = null)`|Detaches a node from the DOM (it will save its position to reuse it later)|`node`: `{null/HTMLElement/String}` - Null / a node to detach / or an ID to save the current node. (If null, detaches the current node; in that case, you can enter an ID as the 1st parameter, to retrieve it later with load()).<br><br>`id`: `{null/String}` - Null / or an internal ID to set for the detached node (optional, but useful to retrieve it later with reattach()).|Pushes the detached node into the store|The current class instance|
-|`attach(id = null)`<br><br>`reattach(id = null)`|Reattaches a detached node to the DOM at same position|`id`: `{null/String}` - Null / or the internal ID of the node to reattach (optional, if no ID is entered the last detached node will be reattached).|Nothing (current node remains the same)|The current class instance|
-|`saveGlobal(emptyObject, prop = null)`|Saves the current node globally in an object, to reuse it later (you must pass a variable representing { ... })|`obj`: `{Object}` - A variable representing an object<br><br>`prop`: `{null/String}` - Null / a property name (if null, will store the object in obj.node)|Nothing (current node remains the same)|The current class instance|
+|`attach(id = null)`<br><br>`reattach(id = null)`|Reattaches a detached node to the DOM at same position|`id`: `{null/String}` - Null / or the internal ID of the node to reattach (optional, if no ID is entered the last detached node will be reattached).|Nothing|The current class instance|
+|`saveGlobal(emptyObject, prop = null)`|Saves the current node globally in an object, to reuse it later (you must pass a variable representing { ... })|`obj`: `{Object}` - A variable representing an object<br><br>`prop`: `{null/String}` - Null / a property name (if null, will store the object in obj.node)|Nothing|The current class instance|
 |**STORE OBJECT**|**********|**********|**********|**********|
 |`store.add(node = null, id = null)`|Same as `save(node = null, id = null)`. You can refer to the documentation above.||||
 |`store.get(id = null)`|Same as `load(id = null)`. You can refer to the documentation above.||||
 |`store.remove(node = null)`|Removes a node from the store|`node`: `{null/HTMLElement/String}` - Null / a node to remove / or an ID of a node to remove. (If null, it will try with the current node).|Removes the node from the store|The current class instance|
 |`store.removeLast()`|Removes last node from the store||Removes the node from the store|The current class instance|
 |`store.flush()`|Flushes the store array||Store = empty array|The current class instance|
-|`store.perform(fn)`|Executes a function with store as a parameter|`fn`: `{function(StoredObject[]) : void}` - The function to execute with (StoredObject[] : the store array)|Nothing (current node remains the same)|The current class instance|
+|`store.perform(fn)`|Executes a function with store as a parameter|`fn`: `{function(StoredObject[]) : void}` - The function to execute with (StoredObject[] : the store array)|Nothing|The current class instance|
 |**CONDITIONS**|**********|**********|**********|**********|
 |`if(condition, repeat = false)`<br><br>`condition(condition, repeat = false)`|Sets a condition; next chain is skipped if condition is false (next chain will be executed only if condition is true)|`condition`: `{Boolean/function(HTMLELement):Boolean}` - A condition (boolean value) / A function with the current node as the parameter, returning a boolean value<br><br>`repeat`: `{Boolean}` - Repeat ? (if true, you must use later cancelCondition() to stop skipping the chain in case of false return)|Next chain is skipped if condition is false / if repeat and condition is false, then all next chains are skipped until calling cancelCondition()|The current class instance|
 |`elseIf(condition, repeat = false)`|Next chain is skipped if the last condition was true (next chain is executed only if the last condition was false) and again (like condition()) next chain is skipped if condition is false (next chain is executed only if condition is true)|`condition`: `{Boolean/function(HTMLELement):Boolean}` - A condition (boolean value) / A function with the current node as the parameter, returning a boolean value<br><br>`repeat`: `{Boolean}` - Repeat ? (if true, you must use later cancelCondition() to stop skipping the chain in case of false return)|Next chain is skipped if condition is false / if repeat and condition is false, then all next chains are skipped until calling cancelCondition()|The current class instance|
