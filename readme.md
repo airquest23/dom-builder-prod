@@ -172,6 +172,7 @@ or even shorter:
 
 ```javascript
 DOM.create('button')    // Create a button
+  .class('btn btn-primary')
   .appendTo(            // Append it to a selected node
     DOM(id).node        // You must append it to the node object (.node)
   );
