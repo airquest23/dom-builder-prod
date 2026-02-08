@@ -185,6 +185,8 @@ See the documentation below for all references, and also the examples.
 
 Please check the examples: [html preview here](https://rawcdn.githack.com/airquest23/dom-builder-prod/fafe2bb133cbbd7a6524f24bb5719937695f92ef/index.html) / [source code here](./index.html).
 
+You can also check the DOMBuilder version of a my JS custom table component here : [github repo](https://github.com/airquest23/custom-js-table-prod) / [html preview](https://rawcdn.githack.com/airquest23/custom-js-table-prod/6e6865cc98ef3d100612f3627bfa94670a6d0a98/examples/dom-builder-version.html) / [raw file](https://github.com/airquest23/custom-js-table-prod/blob/main/custom-js-table/dom-builder-version/custom-js-table.js).
+
 ## Documentation
 
 |**Properties/Methods**|**Description**|**Parameters**|**Sets**|**Returns**|
